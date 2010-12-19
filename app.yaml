@@ -1,0 +1,24 @@
+application: simplesto
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /api/bucket/.*/.*/item.*
+  script: Handler_Items.py
+  secure: always
+
+- url: /api/bucket/.*
+  script: Handler_Buckets.py
+  secure: always
+
+- url: /api/user/.*
+  script: Handler_Users.py
+  secure: always
+
+- url: .*
+  script: main.py
+  secure: always

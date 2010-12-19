@@ -1,0 +1,13 @@
+simplesto (Simple Storage) is intended to be a protocol for storing little chunks of information on the web. Something like an on-line registry a user's applications can use to store and share data.
+
+Some possible use cases:
+- e-book reader bookmarks and annotations: why not have a personal storage where all your e-book reader applications can store notes and bookmarks?
+- web browser bookmarks, or even something like a personal del.icio.us
+- application settings: use a simplesto service to store your application settings and have them available in any computer you use.
+- ...
+
+This is a pre-pre-aplha implementation of a simplesto server for Google AppEngine. The idea is that any user will be able to set up their own simplesto server, just by uploading the code to AppEngine (this looks like a nice plug'n'play approach, with no cost.)
+
+The current implementation will probably *NOT WORK*. It's a work in progress. It has no documentation. It has many bugs. It will change.
+
+If all this sounds interesting please follow the project, but don't use the code yet.

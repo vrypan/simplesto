@@ -1,0 +1,106 @@
+body {
+	background: #fff ;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#content {
+	clear: both;
+	display: block;
+	margin: 2ex auto ;
+}
+
+table.bucket {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: left;
+	border: 1px #ccd5de solid;
+}
+
+table.bucket th{
+	padding: 0.5ex 1ex;
+	background-color: #c5d7ef;
+	color: #000;
+}
+
+table.bucket td{
+	border-bottom: 1px solid #D9D9D9;
+	vertical-align: top;
+	padding: 1.5ex 1ex;
+}
+
+table.bucket td.actions, table.bucket th.actions{
+	text-align: right;
+}
+
+table.bucket td.name{
+	width: 180px;
+}
+table.bucket td.description{
+	width: 400px;
+}
+table.bucket td.is_pub{
+	width: 80px;
+}
+td.name {
+	width: 120px;
+	min-width: 120px;
+}
+td.application, td.datatype {
+	min-width: 80px;
+	width: 80px;
+}
+
+td.content {
+	max-width: 200px;
+}
+td.content div {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	white-space:nowrap;
+}
+td.date {
+	min-width: 22ex;
+	width: 22ex;
+}
+td.actions {
+	width: 50px;
+}
+
+td div {
+	display: block;
+	width: 100%;
+}
+input1 {
+	background: #F2F2F2 ;
+	padding: 0.5ex;
+	border: 1px solid #6D9E20;
+}
+
+#bucket_name {
+	width: 150px;
+}
+#bucket_description {
+	width: 380px;
+}
+
+#new_bucket_form, #new_item_form {
+	border: 0px solid #737373;
+	background: #283653;
+	display: none;
+	color: white;
+}
+#new_bucket_form td {
+	padding-top: 2ex;
+	padding-bottom: 2ex;
+	border:0;
+}
+
+.button {
+	background: #F2F2F2 ;
+	padding: 1ex;
+	border: 1px solid #6D9E20;
+	text-decoration: none;
+	color: #403A3F;
+}

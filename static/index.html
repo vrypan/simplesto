@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href="/static/css/basic.css" rel="stylesheet" type="text/css"/>
+
+	<title>untitled</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+	<script type="text/javascript" src="buckets.js"></script>
+	<script type="text/javascript" src="items.js"></script>
+	
+	<script >
+	var User = null;
+	var edit_mode = false ;
+
+	$(document).ready(function(){
+		$("#status").text("working...");
+
+		$("#button").click(function(e){
+			// stop normal link click
+			e.preventDefault();
+			$.getJSON("https://simplesto.appspot.com/api/user/?jsoncallback=?", 
+			   	function(json){
+					User = json ;
+					$("#status").text("Got user data.") ;
+					$("#user_name").text(User['user_name']) ;
+					$("#real_name").text(User['real_name']) ;
+					$("#secret").text(User['secret']) ;
+					show_user_buckets(User) ;
+				}
+			 );
+		}) ;
+	});
+	</script>
+	
+</head>
+
+<body>
+	<div id="content">
+	<p>status:<span id="status"></span>
+	</p>
+	
+	<div id="user_data">
+		user name: <span id="user_name"></span><br/>
+		real name: <span id="real_name"></span><br/>
+		secret: <span id="secret"></span><br/>
+		<a href="#" id="button">update values</a>
+	</div>
+	
+	<div id="data"></div>
+		
+	</div>
+</body>
+</html>

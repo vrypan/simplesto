@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block page_title %}{{ user.user_name }}{% endblock %}
+
+{% block body %}
+<br/><a href="{{ logout_url }}">Logout</a>
+<br/><strong>User:</strong> {{ user.user_name }} @ {{ user.user_domain }}
+<br/><strong>Auth:</strong> {{ user.auth_provider }}
+
+{% endblock %}
