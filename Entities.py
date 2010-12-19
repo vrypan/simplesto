@@ -14,7 +14,7 @@ class User(db.Model):
 	upd_date = db.DateTimeProperty(auto_now=True)
 	
 	@classmethod
-	def get_by_user_key(cls, user_name, api_key, user_domain='twitter'):
+	def get_by_user_key(cls, user_name, api_key, user_domain='google'):
 		if not (user_name and api_key):
 			return False
 		query = User.all()

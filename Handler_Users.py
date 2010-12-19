@@ -5,7 +5,6 @@ from google.appengine.ext import db
 from google.appengine.ext.webapp import util
 from simplesto import demjson
 from Entities import User, Bucket, Item, decode_auth
-from simplesto.twitter_oauth_handler import OAuthClient, OAuthHandler, OAuthAccessToken
 	
 class UsersHandler(webapp.RequestHandler):
 							
