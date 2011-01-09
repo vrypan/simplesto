@@ -12,6 +12,7 @@ function show_bucket_contents(bucket_name, secret) {
 		
 		var html = '' ;
 		html = html + '<tr><th>application</th><th>datatype</th><th>name</th><th>content</th>' ;
+		html = html + '<th>created</th>' ;
 		html = html + '<th>updated</th>' ;
 		html = html + '<th class="actions"><input type="button" id="new_item_button" value="new"/></tr>' ;
 		$('#items_table').append(html) ;
@@ -32,7 +33,7 @@ function show_bucket_contents(bucket_name, secret) {
 			html = html + '<td class="datatype">'+item['datatype']+'</td>' ;
 			html = html + '<td class="name">'+item['name']+'</td>';
 			html = html + '<td class="content"><div>'+item['content']+'&nbsp;</div></td>' ;
-			// html = html + '<td class="date cre_date">'+item['cre_date'].substr(0,19)+'</td>' ;
+			html = html + '<td class="date cre_date">'+item['cre_date'].substr(0,19)+'</td>' ;
 			html = html + '<td class="date upd_date">'+item['upd_date'].substr(0,19)+'</td>' ;
 			// html = html + '<td class="date exp_date">'+item['exp_date']+'</td>' ;
 			html = html + '<td class="actions">';
@@ -110,13 +111,14 @@ function show_bucket_contents(bucket_name, secret) {
 					success: function(data) {
 						item = $.parseJSON(data) ;
 						html = '' ;
-						html = html + '<tr class="row"><td class="name">'+item['name']+'</td>';
+						html = html + '<tr class="row">';
 						html = html + '<td class="application">'+item['application']+'</td>' ;
 						html = html + '<td class="datatype">'+item['datatype']+'</td>' ;
+						html = html + '<td class="name">'+item['name']+'</td>' ;
 						html = html + '<td class="content">'+item['content']+'</td>' ;
 						html = html + '<td class="date cre_date">'+item['cre_date'].substr(0,19)+'</td>' ;
 						html = html + '<td class="date upd_date">'+item['upd_date'].substr(0,19)+'</td>' ;
-						html = html + '<td class="date exp_date">'+item['exp_date']+'</td>' ;
+						//html = html + '<td class="date exp_date">'+item['exp_date']+'</td>' ;
 						html = html + '<td class="actions">';
 						html = html + '<a href="#" class="button delete_item">x</a></td></tr>' ;
 						$('#items_table').append(html);

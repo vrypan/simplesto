@@ -12,7 +12,7 @@ function show_user_buckets( secret ) {
 
 		var html = '' ;
 		html = html + '<tr><th>name</th><th>description</th><th>public?</th>' ;
-		html = html + '<th>last update</th><th>secret</th>' ;
+		html = html + '<th>last update</th><th>bucket secret</th>' ;
 		html = html + '<th class="actions"><input type="button" id="new_bucket_button" value="create bucket"/></tr>' ;
 		$('#myBuckets').append(html) ;
 		
@@ -32,7 +32,7 @@ function show_user_buckets( secret ) {
 			} else {
 				var is_pub = 'No';
 			}
-			html = html + '<tr class="row"><td class="name">'+bucket['name']+'</td>';
+			html = html + '<tr class="row"><td class="name"><a href="#">'+bucket['name']+'</a></td>';
 			html = html + '<td class="description">'+bucket['description']+'</td>' ;
 			html = html + '<td class="is_pub bool">'+ is_pub +'</td>' ;
 			html = html + '<td class="date upd_date">'+bucket['upd_date']+'</td>' ;

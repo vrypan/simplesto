@@ -28,30 +28,31 @@ import string
 from simplesto import demjson
 from Entities import User, Bucket, Item
 	
-class MainHandler(webapp.RequestHandler): 
-	def myauth(self):
-		user = users.get_current_user()
-		
-		if not user:
-			return False
-		
-		query = User.all()
-		query.filter('user_name =', user.nickname())
-		query.filter('user_domain =', 'google' )
-		u = query.get()
+def myauth():
+	user = users.get_current_user()
+	
+	if not user:
+		return False
+	
+	query = User.all()
+	query.filter('user_name =', user.nickname())
+	query.filter('user_domain =', 'google' )
+	u = query.get()
 
-		if not u:
-			u = User(
-				api_key=User.new_api_key(),
-				user_name=user.nickname(), 
-				user_domain='google',
-				email = user.email()
-				)
-			u.put()
-		return u
+	if not u:
+		u = User(
+			api_key=User.new_api_key(),
+			user_name=user.nickname(), 
+			user_domain='google',
+			email = user.email()
+			)
+		u.put()
+	return u
+	
+class MainHandler(webapp.RequestHandler): 
 		
 	def get(self):
-		u = self.myauth()
+		u = myauth()
 		if u:
 			path = os.path.join(os.path.dirname(__file__), 'templates/user.html')
 			self.response.out.write(template.render(path, {
@@ -64,7 +65,6 @@ class MainHandler(webapp.RequestHandler):
 
 class guiHandler(webapp.RequestHandler):
 	def get(self, secret=None, bucket_name=None):
-		
 		if bucket_name:			
 			path = os.path.join(os.path.dirname(__file__), 'templates/items.html')
 			self.response.out.write(template.render(path,{
@@ -72,14 +72,19 @@ class guiHandler(webapp.RequestHandler):
 				'secret':secret
 				}))
 		else:
-			path = os.path.join(os.path.dirname(__file__), 'templates/buckets.html')
-			self.response.out.write(template.render(path,{
-				'secret':secret
+			u = myauth()
+			if u:
+				path = os.path.join(os.path.dirname(__file__), 'templates/buckets.html')
+				self.response.out.write(template.render(path,{
+				'secret':u.secret
 				}))	
-		
+			else:
+				# Let the user they should login.
+				pass
 def main():
     application = webapp.WSGIApplication([
 		('/',MainHandler),
+		('/gui/bucket/', guiHandler),
 		('/gui/bucket/(.*)/', guiHandler),
 		('/gui/bucket/(.*)/(.*)/item', guiHandler),
 		], debug=True)

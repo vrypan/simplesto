@@ -3,7 +3,7 @@
 
 {% block body %}
 <br/><a href="{{ logout_url }}">Logout</a>
-<br/><strong>User:</strong> {{ user.user_name }} @ {{ user.user_domain }}
-<br/><strong>Auth:</strong> {{ user.auth_provider }}
-
+<br/><strong>User:</strong> {{ user.user_name }}
+<br/><strong>API key:</strong> {{ user.secret}}
+<br/><a href="/gui/bucket/">view buckets</a>
 {% endblock %}

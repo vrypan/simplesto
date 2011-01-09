@@ -27,6 +27,10 @@ class User(db.Model):
 		else:
 			return u
 
+	@property
+	def secret(self):
+		return "%dx%s" % (self.key().id(), self.api_key)
+		
 	@classmethod
 	def new_api_key(cls):
 		bucket_secret = ''.join(random.choice(string.ascii_letters + string.digits) for i in xrange(8))
